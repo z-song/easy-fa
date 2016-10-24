@@ -2,7 +2,7 @@
 
 namespace Encore\EasyFontAwesome;
 
-class FontAwesome
+class FontAwesome implements \Iterator
 {
     /**
      * Icon name.
@@ -44,7 +44,9 @@ class FontAwesome
     {
         $this->addClass('fa', '');
 
-        $this->addClass($this->icon);
+        if (is_string($this->icon)) {
+            $this->addClass($this->icon);
+        }
     }
 
     /**
@@ -54,7 +56,7 @@ class FontAwesome
      * @param string $prefix
      * @return $this
      */
-    protected function addClass($attr, $prefix = 'fa-')
+    public function addClass($attr, $prefix = 'fa-')
     {
         $this->classes[] = $prefix.$attr;
 
@@ -313,5 +315,41 @@ EOT;
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     * @return FontAwesome
+     */
+    public function current()
+    {
+        $icon = current($this->icon);
+
+        $fa = clone $this;
+
+        return $fa->addClass($icon);
+    }
+
+    public function next()
+    {
+        next($this->icon);
+    }
+
+    public function key()
+    {
+        return key($this->icon);
+    }
+
+    public function valid()
+    {
+        return $this->key() !== null;
+    }
+
+    public function rewind()
+    {
+        if (!is_array($this->icon)) {
+            $this->icon = [$this->icon];
+        }
+
+        reset($this->icon);
     }
 }
