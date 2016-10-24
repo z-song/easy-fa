@@ -14,3 +14,14 @@ if (! function_exists('fa')) {
     }
 
 }
+
+if (! function_exists('fa_assets')) {
+
+    /**
+     * @return string
+     */
+    function fa_assets()
+    {
+        return '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">';
+    }
+}

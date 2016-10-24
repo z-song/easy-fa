@@ -9,7 +9,7 @@ Installation
 -----------
 
 ```
-composer require encore/easy-fa dev-master
+composer require encore/easy-fa
 ```
 
 Example Usage

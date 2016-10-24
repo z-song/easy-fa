@@ -2,6 +2,10 @@
 
 namespace Encore\EasyFontAwesome;
 
+/**
+ * Class FontAwesome
+ * @package Encore\EasyFontAwesome
+ */
 class FontAwesome implements \Iterator
 {
     /**
@@ -318,7 +322,9 @@ EOT;
     }
 
     /**
-     * @return FontAwesome
+     * Return the current element
+     *
+     * @return FontAwesome.
      */
     public function current()
     {
@@ -329,21 +335,42 @@ EOT;
         return $fa->addClass($icon);
     }
 
+    /**
+     * Move forward to next element
+     *
+     * @return void Any returned value is ignored.
+     */
     public function next()
     {
         next($this->icon);
     }
 
+    /**
+     * Return the key of the current element
+     *
+     * @return mixed scalar on success, or null on failure.
+     */
     public function key()
     {
         return key($this->icon);
     }
 
+    /**
+     * Checks if current position is valid
+     *
+     * @return boolean The return value will be casted to boolean and then evaluated.
+     * Returns true on success or false on failure.
+     */
     public function valid()
     {
         return $this->key() !== null;
     }
 
+    /**
+     * Rewind the Iterator to the first element
+     *
+     * @return void Any returned value is ignored.
+     */
     public function rewind()
     {
         if (!is_array($this->icon)) {
