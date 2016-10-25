@@ -233,10 +233,10 @@ EOT;
     /**
      * Rotate icon.
      *
-     * @param string $type
+     * @param int $type
      * @return $this
      */
-    public function rotate($type)
+    public function rotate($type = 90)
     {
         return $this->addClass("rotate-$type");
     }
@@ -378,5 +378,18 @@ EOT;
         }
 
         reset($this->icon);
+    }
+
+    /**
+     * Do nothing.
+     *
+     * @param $method
+     * @param $arguments
+     *
+     * @return $this
+     */
+    public function __call($method, $arguments)
+    {
+        return $this;
     }
 }
