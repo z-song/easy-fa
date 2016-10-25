@@ -1,7 +1,7 @@
 Easy FontAwesome
 =====
 
-The elegant way to use [font-awesome](http://fontawesome.io/icons/) for phper.
+The elegant way to use [font-awesome](http://fontawesome.io/icons/) for PHPer.
 
 Inspired by [FontAwesomePHP](https://github.com/kevinkhill/FontAwesomePHP)
 
@@ -15,7 +15,14 @@ composer require encore/easy-fa
 Example Usage
 -----------
 
-Use laravel's view as example
+To use it in Laravel project, first add service provider in `app.php`
+
+```php
+Encore\EasyFontAwesome\FontAwesomeServiceProvider::class,
+```
+
+In views
+
 ```php
 
 <!DOCTYPE html>
@@ -27,6 +34,7 @@ Use laravel's view as example
 
         <title>FontAwesome example</title>
 
+        <!-- import css -->
         {!! fa_assets() !!}
 
     </head>
@@ -34,12 +42,19 @@ Use laravel's view as example
         <botton>{!! fa('envelope') !!}</botton>
         <botton>{!! fa('calendar')->lg() !!}</botton>
         <botton>{!! fa('camera')->border() !!}</botton>
+        
+        <!-- or -->
+
+        <botton>@fa('star')</botton>
+        <botton>@fa('calendar', 'lg')</botton>
+        <botton>@fa('camera', 'lg|border')</botton>
+        <botton>@fa('hourglass', 'x2|rotate:180')</botton>
     </body>
 </html>
 
 ```
 
-In addition to laravel, you can use it in any php project.
+In addition to laravel, you can use it in any PHP project.
 
 ```php
 
