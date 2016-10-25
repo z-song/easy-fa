@@ -11,7 +11,7 @@ class FontAwesomeServiceProvider extends ServiceProvider
     {
         Blade::directive('fa', function($expression) {
 
-            $arguments = explode(',', $expression, 2);
+            $arguments = explode(',', trim($expression, '()'), 2);
 
             $arguments = array_map('trim', $arguments);
 
@@ -36,5 +36,10 @@ class FontAwesomeServiceProvider extends ServiceProvider
 
             return "<?php echo '{$fa->render()}'; ?>";
         });
+    }
+
+    public function register()
+    {
+        
     }
 }
